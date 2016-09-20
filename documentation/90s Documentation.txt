@@ -1,0 +1,71 @@
+            Explanation of Race and Hispanic Origin Categories
+
+Source:  U.S. Census Bureau
+Internet Release date:  September 15, 1999
+
+The race and Hispanic origin categories used by the Census Bureau are mandated 
+by Office of Management and Budget Directive No. 15, which requires all 
+federal record keeping and data presentation to use four race categories 
+(White, Black, American Indian and Alaska Native, Asian and Pacific Islander) 
+and two ethnicity categories (Hispanic, non-Hispanic).  These classifications 
+are not intended to be scientific in nature, but are designed to promote 
+consistency in federal record keeping and data presentation.
+
+It is important to recognize that this system treats race and ethnicity as
+separate and independent categories.  This means that within the federal system 
+everyone is classified as both a member of one of the four race groups and also
+as either Hispanic or non-Hispanic.  Consequently, there are a total of 8
+race-ethnicity categories, as illustrated by the table below:
+
+        U.S. Population by Race and Hispanic Origin, July 1, 1997
+                              (in thousands)
+
+                White      Black   American Indian   Asian & Pacific 
+                                   & Alaska Native      Islander
+non-Hispanic   194,571    32,324       1,977             9,532
+Hispanic        26,746     1,649         347               598 
+
+
+As the above table illustrates, the Hispanic population is predominately White.
+Because the number of Hispanics in the Black, American Indian & Alaska Native, 
+and Asian & Pacific Islander categories is relatively small and thus difficult
+to estimate accurately at smaller levels of geography, our tables which display
+race and Hispanic origin information divide only the White category by
+ethnicity.  The complete race by Hispanic origin breakdown is available in our
+data sets.
+
+Below are listed each of the categories used in our race/Hispanic origin tables
+along with an explanation of how they relate to one another and to the 
+categories given in the table above.
+
+TOTAL -- All individuals in the population.  This is equal to the sum of the 
+         TOTAL WHITE, BLACK, AMERICAN INDIAN, and ASIAN & PACIFIC ISLANDER 
+         categories.
+
+TOTAL HISPANIC -- All Hispanics in the population, regardless of race.  This
+                  category cannot be derived from any of the other categories,
+                  but it can be subtracted from TOTAL to get the total number of
+                  non-Hispanics.
+
+TOTAL WHITE -- The sum of WHITE HISPANIC and WHITE NON-HISPANIC.
+
+WHITE HISPANIC -- This group can be thought of as the Hispanic portion of the
+                  White population, or as the White portion of the Hispanic
+                  population.  Subtracting this group from TOTAL HISPANIC gives
+                  the total number of Hispanics who are either Black,
+                  American Indian or Alaska Native, or Asian or Pacific 
+                  Islander.
+
+WHITE NON-HISPANIC -- Whites who are not of Hispanic origin.  Subtracting this
+                      group from TOTAL gives the total of all individuals who
+                      are Hispanic and/or a member of a race group other than
+                      White.
+
+BLACK -- All individuals who are Black, regardless of Hispanic origin.
+
+AMERICAN INDIAN -- All individuals who are American Indian or Alaska Native (a
+                   category which includes Eskimos and Aleuts), regardless of
+                   Hispanic origin.
+
+ASIAN & PACIFIC ISLANDER -- All individuals who are Asian or Pacific Islander,
+                            regardless of Hispanic origin.
