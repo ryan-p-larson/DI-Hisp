@@ -1,0 +1,126 @@
+(CO-99-11)  Population Estimates for Counties by Race and Hispanic Origin:  July 1, 1995
+   
+Source:  Population Estimates Program, Population Division, U.S. Census Bureau, Washington, DC  20233
+Contact:  Demographic Call Center Staff, 1-866-758-1060 
+          pop@census.gov (please include a phone number with email correspondence)
+   
+Internet Release Date:  August 30, 2000
+
+                                             Total    Total    White    White    Total    Total    Total    Total
+  FIPS                                                White Hispanic     non-    Black American  Asian & Hispanic
+ State                                                               Hispanic            Indian  Pacific         
+   and                                                                                 & Alaska Islander         
+County Area Name                                                                         Native                  
+  Code                                                                                                           
+                                                                                                                 
+ 19000     IOWA                            2840860  2744233    41973  2702260    54323     8310    33994    46227
+ 19001 Adair County                           8246     8216       36     8180        1        4       25       47
+ 19003 Adams County                           4507     4491       20     4471        5        8        3       22
+ 19005 Allamakee County                      14134    14016       43    13973       49       26       43       65
+ 19007 Appanoose County                      13598    13451       88    13363       78       28       41       89
+ 19009 Audubon County                         6894     6883       24     6859        2        3        6       26
+ 19011 Benton County                         24340    24205      121    24084       23       37       75      149
+ 19013 Black Hawk County                    122634   112113     1106   111007     9002      227     1292     1226
+ 19015 Boone County                          25565    25389      142    25247       56       19      101      144
+ 19017 Bremer County                         23189    22908       96    22812       83       14      184      108
+ 19019 Buchanan County                       21195    21076      158    20918       35       26       58      161
+ 19021 Buena Vista County                    19930    19356      164    19192       55       13      506      201
+ 19023 Butler County                         15735    15688       48    15640        4       13       30       50
+ 19025 Calhoun County                        11523    11404       50    11354       79       14       26       51
+ 19027 Carroll County                        21593    21464       73    21391       20       25       84      104
+ 19029 Cass County                           14942    14896       43    14853        9       20       17       47
+ 19031 Cedar County                          17662    17559      141    17418       19       18       66      145
+ 19033 Cerro Gordo County                    46627    45941     1281    44660      319       43      324     1334
+ 19035 Cherokee County                       13621    13527       44    13483       25       32       37       56
+ 19037 Chickasaw County                      13408    13375       56    13319        5        4       24       56
+ 19039 Clarke County                          8150     8115       22     8093        4        8       23       22
+ 19041 Clay County                           17529    17379       50    17329        9       37      104       56
+ 19043 Clayton County                        18754    18703       70    18633        6       16       29       72
+ 19045 Clinton County                        50877    49678      354    49324      793      133      273      399
+ 19047 Crawford County                       16469    16265      112    16153       67       32      105      119
+ 19049 Dallas County                         33320    33083      263    32820       75       52      110      270
+ 19051 Davis County                           8484     8426       61     8365        2       27       29       62
+ 19053 Decatur County                         8270     8119       51     8068       40       18       93       55
+ 19055 Delaware County                       18394    18309       94    18215       18       21       46      115
+ 19057 Des Moines County                     42547    40779      634    40145     1408       72      288      688
+ 19059 Dickinson County                      15582    15495       76    15419       21       26       40       89
+ 19061 Dubuque County                        88352    87229      578    86651      413      107      603      649
+ 19063 Emmet County                          11152    11083       72    11011       23       14       32       78
+ 19065 Fayette County                        21955    21801      247    21554       68       19       67      261
+ 19067 Floyd County                          16592    16523      101    16422        9       10       50      108
+ 19069 Franklin County                       11002    10968      184    10784        8        6       20      192
+ 19071 Fremont County                         8039     8010       60     7950        3        9       17       60
+ 19073 Greene County                         10000     9950       33     9917        5       11       34       35
+ 19075 Grundy County                         12218    12175       46    12129        7        9       27       48
+ 19077 Guthrie County                        11350    11294       50    11244        9       22       25       55
+ 19079 Hamilton County                       16225    16074      146    15928       11       23      117      159
+ 19081 Hancock County                        12123    12087      160    11927        1        7       28      164
+ 19083 Hardin County                         18745    18548      122    18426      103       29       65      128
+ 19085 Harrison County                       15084    14990       76    14914       11       18       65       76
+ 19087 Henry County                          19852    19265      184    19081      247       56      284      195
+ 19089 Howard County                          9747     9703       24     9679        6       11       27       35
+ 19091 Humboldt County                       10376    10324       39    10285        9       13       30       42
+ 19093 Ida County                             8197     8169       24     8145        1        5       22       24
+ 19095 Iowa County                           15160    15085       56    15029       12       13       50       63
+ 19097 Jackson County                        20143    20063      123    19940       21       25       34      126
+ 19099 Jasper County                         35189    34785      242    34543       98       73      233      254
+ 19101 Jefferson County                      16775    16465      186    16279      105       24      181      190
+ 19103 Johnson County                       101157    93466     1914    91552     2387      223     5081     2135
+ 19105 Jones County                          20350    19906      135    19771      365       43       36      155
+ 19107 Keokuk County                         11637    11573       26    11547        6       19       39       26
+ 19109 Kossuth County                        18094    18019      102    17917        9        7       59      108
+ 19111 Lee County                            39064    37524      946    36578     1286       71      183     1030
+ 19113 Linn County                          179080   172867     2108   170759     3860      420     1933     2370
+ 19115 Louisa County                         11820    11675      571    11104       79       40       26      581
+ 19117 Lucas County                           9026     8981       56     8925        5       20       20       61
+ 19119 Lyon County                           11835    11771       12    11759        5       18       41       19
+ 19121 Madison County                        13448    13357       94    13263       12       52       27      113
+ 19123 Mahaska County                        21827    21522      114    21408       42       19      244      125
+ 19125 Marion County                         30994    30449      227    30222      111       48      386      235
+ 19127 Marshall County                       38714    37891      378    37513      298      114      411      408
+ 19129 Mills County                          13801    13716      113    13603       23       35       27      115
+ 19131 Mitchell County                       11074    11040       58    10982        3        1       30       62
+ 19133 Monona County                         10071    10026       35     9991        4       23       18       37
+ 19135 Monroe County                          8170     8092       24     8068       20       18       40       24
+ 19137 Montgomery County                     11920    11889       60    11829        5       11       15       65
+ 19139 Muscatine County                      41167    40346     3872    36474      288      131      402     4025
+ 19141 O'Brien County                        15262    15163       49    15114        8       32       59       53
+ 19143 Osceola County                         7055     7028       16     7012        3        7       17       16
+ 19145 Page County                           16695    16434      251    16183      106       57       98      261
+ 19147 Palo Alto County                      10134    10091       26    10065        7       17       19       26
+ 19149 Plymouth County                       24340    24213       78    24135       34       17       76       87
+ 19151 Pocahontas County                      9110     9081       32     9049        4        8       17       32
+ 19153 Polk County                          350699   324029     8220   315809    17228     1066     8376     9223
+ 19155 Pottawattamie County                  83722    82566     2018    80548      528      242      386     2096
+ 19157 Poweshiek County                      18886    18545       65    18480       91       24      226       78
+ 19159 Ringgold County                        5326     5295       18     5277        1       10       20       18
+ 19161 Sac County                            12027    11987       54    11933        4       13       23       55
+ 19163 Scott County                         156658   145268     5507   139761     8988      553     1849     6066
+ 19165 Shelby County                         13032    12988       51    12937        5       18       21       51
+ 19167 Sioux County                          31223    30843       95    30748       31       41      308      128
+ 19169 Story County                          74184    68467     1007    67460     1276      114     4327     1123
+ 19171 Tama County                           17756    16796      168    16628       36      837       87      178
+ 19173 Taylor County                          7145     7107       64     7043        1       10       27       66
+ 19175 Union County                          12437    12348       44    12304       12       25       52       48
+ 19177 Van Buren County                       7765     7723       32     7691       10        9       23       37
+ 19179 Wapello County                        35632    35024      259    34765      294      102      212      288
+ 19181 Warren County                         38840    38439      384    38055      116       70      215      432
+ 19183 Washington County                     20515    20330      286    20044       92       20       73      292
+ 19185 Wayne County                           6840     6817       32     6785        1        5       17       32
+ 19187 Webster County                        39269    38060      623    37437      903      111      195      646
+ 19189 Winnebago County                      11936    11790       99    11691       36       17       93      120
+ 19191 Winneshiek County                     20933    20620       68    20552       51        5      257       82
+ 19193 Woodbury County                      101997    96089     3076    93013     2142     2029     1737     3792
+ 19195 Worth County                           7837     7804      113     7691       15        3       15      114
+ 19197 Wright County                         14361    14278      119    14159       10       15       58      123
+
+
+Note:  Hispanics can be of any race.
+
+An explanation of the race and Hispanic origin categories used in this table can be found at
+www.census.gov/population/estimates/rho.txt
+
+The estimates presented here were produced by a method which is still in a developmental stage.  They
+may not be accurate for populations which are very small or have unusual race distributions and they may not
+reflect recent changes in the distribution of the population with respect to race and Hispanic origin.  These
+figures should be used with caution.
