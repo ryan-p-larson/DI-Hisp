@@ -1,7 +1,6 @@
 # Census Links
 
 
-<<<<<<< HEAD
 #### Voter Turnout
 
 [Historical Reported Voting Rates](http://www.census.gov/data/tables/time-series/demo/voting-and-registration/voting-historical-time-series.html)http://www.census.gov/data/tables/time-series/demo/voting-and-registration/voting-historical-time-series.html). A **lot** of information and tables.
@@ -10,13 +9,13 @@
 
 [DataFerret: Self serve census data](http://thedataweb.rm.census.gov/ftp/cps_ftp.html#cpssupps). 
 > ...users can also extract estimates for every election that the U.S. Census Bureau has data for via DataFerrett, the Bureau's online data access application. The November CPS data files, and entire data sets, are accessible for free through the DataFerrett tool dating back to 1994.
-=======
+
+---
 #### Maps
 
 [Census Tracts](ftp://ftp2.census.gov/geo/tiger/TIGER2014/TRACT/tl_2014_19_tract.zip)
->>>>>>> f48ef90db08752ae924ec1f6317cb04acb26468e
 
-
+---
 #### County Characteristics
 
 [Methodology](http://www.census.gov/popest/methodology/2015-natstcopr-meth.pdf)
