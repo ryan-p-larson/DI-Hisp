@@ -8,20 +8,25 @@
 
   <!-- Chart styling -->
   <style>
-  .tract {
-      fill: none;
-  }
-  .county {
-      fill: none;
-      stroke: #fff;
-      stroke-linejoin: round;
-      stroke-width: 1;
-  }
-  .state {
-      fill: none;
-      stroke: #666;
-      stroke-linejoin: round;
-  }
+      .tract {
+          fill: none;
+      }
+      .county {
+          fill: none;
+          stroke: #fff;
+          stroke-linejoin: round;
+          stroke-width: 1.5;
+      }
+      .state {
+          fill: none;
+          stroke: #666;
+          stroke-linejoin: round;
+      }
+      .legend {
+          font-family: sans-serif;
+          font-size: 11px;
+          text-anchor: middle;
+      }
   </style>
 </head>
 
@@ -34,14 +39,15 @@ var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-var color = d3.scaleThreshold()
-    .domain([2, 4, 6, 8, 10, 12])
-    .range(['#ffffb2','#fed976','#feb24c','#fd8d3c','#fc4e2a','#e31a1c','#b10026']);
-
 var path = d3.geoPath()
     .pointRadius(2);
 
-d3.json('data/processed/merged-tracts.json', function(data) {
+var color = d3.scaleThreshold()
+    // Most sensible threshold based on histogram of values
+    .domain([2, 4, 6, 8, 10, 12])
+    .range(['#ffffb2','#fed976','#feb24c','#fd8d3c','#f03b20','#bd0026']);
+
+d3.json('data/processed/maps/2014-tracts.json', function(data) {
 
     // Create vars to hold different levels of granulairty
     var tracts = topojson.feature(data, data.objects.tracts),
@@ -75,12 +81,37 @@ d3.json('data/processed/merged-tracts.json', function(data) {
         .datum(iowa)
         .attr('class', 'state')
         .attr('d', path);
+
+    legend();
 });
 
 // Retrieve the County from the GEOID as FIPS
 function census(tract) {
     var county = tract.substring(0, 5);
     return county;
+}
+
+function legend() {
+    var g = svg.append('g'),
+        legend = g.selectAll('.legend')
+            .data(color.domain())
+        .enter().append('g')
+        .attr('class', 'legend');
+
+    legend.append('rect')
+        .attr('x', function(d, i) { return (width / 3) + (i * 60); })
+        .attr('y', height - 20)
+        .attr('width', 58)
+        .attr('height', 10)
+        .style('fill', function(d) { console.log(d);return color(d); });
+
+    legend.append('text')
+        .attr('x', function(d, i) {
+            var temp = i > 0 ? -31 : 31;
+            return (width / 3) + (i * 60) + temp; })
+        .attr('y', height - 30)
+        .text(function(d) { return d + "%"; });
+
 }
 </script>
 </body>
