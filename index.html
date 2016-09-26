@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <!-- js -->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/topojson.v1.min.js"></script>
+  <script src="https://d3js.org/d3-queue.v3.min.js"></script>
+
+  <!-- Chart styling -->
+  <style>
+  .tract {
+      fill: none;
+  }
+  .tract-border {
+      fill: none;
+      stroke: #333;
+      stroke-linejoin: round;
+      stroke-width: 5;
+  }
+  </style>
+</head>
+
+<body>
+<script>
+var width = 960,
+    height = 500;
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var color = d3.scaleThreshold()
+    .domain([2, 4, 6, 8, 10, 12])
+    .range(['#ffffb2','#fed976','#feb24c','#fd8d3c','#fc4e2a','#e31a1c','#b10026']);
+
+var path = d3.geoPath()
+    .pointRadius(2);
+
+d3.json('data/processed/merged-tracts.json', function(data) {
+
+    var tracts = topojson.feature(data, data.objects.tracts);
+
+    path.projection(d3.geoConicConformal()
+            .parallels([42 + 4 / 60, 43 + 16 / 60])
+            .rotate([93 + 30 / 60, -41 - 30 / 60])
+            .fitSize([width, height], tracts));
+
+    svg.selectAll('path')
+            .data(tracts.features)
+        .enter().append('path')
+        .attr('class', 'tract')
+        .attr('d', path)
+        .style('fill', function(d) { return color(d.properties.hisp_perc); });
+
+    svg.append('path')
+        .data(topojson.merge(data, data.objects.tracts, function(a, b) {
+            return a !== b && census(a.id) !== census(b.id); }))
+        .attr('class', 'tract-border')
+        .attr('d', path);
+});
+
+function census(tract) {
+    var state = tract.substring(0, 2),
+        county = tract.substring(0, 5);
+    return county;
+}
+</script>
+</body>
