@@ -1,16 +1,20 @@
 #===| Mapping |===#
 
+
 #create topojson with the county populations embedded
-#data/processed/maps/county-populations.json: data/processed/maps/counties.json data/processed/populations/ia-hisp-counties.csv
-#	topojson
-
-
+data/processed/maps/county-populations.json: data/processed/maps/counties.json data/processed/populations/ia-hisp-counties.csv
+	topojson -e data/processed/populations/ia-hisp-counties.csv \
+	--id-property COUNTYFP,COUNTY \
+	-p Name=CTYNAME,County=COUNTY,1992=+hisp_perc1992,1996=+hisp_perc1996,2000=+hisp_perc2000,2004=+hisp_perc2004,2008=+hisp_perc2008,2012=+hisp_perc2012 \
+	-o data/processed/maps/county-populations.json \
+	-- \
+	data/processed/maps/counties.json
 
 data/processed/maps/counties.json:
-	ogr2ogr -f GeoJSON \
+	ogr2ogr -f GeoJson \
 	-where "STATEFP IN ('19')" \
 	data/processed/maps/counties.json \
-	data/external/maps/counties/tl_2014_us_county.shp
+	data/external/maps/counties/cb_2015_us_county_500k.shp
 
 # Create census tracts hispanic population
 data/processed/maps/2014-tracts.json: data/processed/maps/tracts.json data/processed/populations/ia-tracts-2014.csv

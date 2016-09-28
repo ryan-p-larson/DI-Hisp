@@ -22,9 +22,9 @@
           stroke: #666;
           stroke-linejoin: round;
       }
-      .legend {
+      .title {
           font-family: sans-serif;
-          font-size: 11px;
+          font-size: 14px;
           text-anchor: middle;
       }
   </style>
@@ -32,12 +32,12 @@
 
 <body>
 <script>
-var width = 960,
-    height = 500;
+var width = 266,
+    height = 200;
 
-var svg = d3.select("body").append("svg")
+/*var svg = d3.select("body").append("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height);*/
 
 var path = d3.geoPath()
     .pointRadius(2);
@@ -46,7 +46,7 @@ var color = d3.scaleThreshold()
     // Most sensible threshold based on histogram of values
     .domain([2, 4, 6, 8, 10, 12])
     .range(['#ffffb2','#fed976','#feb24c','#fd8d3c','#f03b20','#bd0026']);
-
+/*
 d3.json('data/processed/maps/2014-tracts.json', function(data) {
 
     // Create vars to hold different levels of granulairty
@@ -84,34 +84,63 @@ d3.json('data/processed/maps/2014-tracts.json', function(data) {
 
     legend();
 });
-
+*/
 // Retrieve the County from the GEOID as FIPS
 function census(tract) {
     var county = tract.substring(0, 5);
     return county;
 }
 
-function legend() {
-    var g = svg.append('g'),
-        legend = g.selectAll('.legend')
-            .data(color.domain())
-        .enter().append('g')
-        .attr('class', 'legend');
 
-    legend.append('rect')
-        .attr('x', function(d, i) { return (width / 3) + (i * 60); })
-        .attr('y', height - 20)
-        .attr('width', 58)
-        .attr('height', 10)
-        .style('fill', function(d) { console.log(d);return color(d); });
+// small multiples
+d3.json('data/processed/maps/county-populations.json', function(data) {
 
-    legend.append('text')
-        .attr('x', function(d, i) {
-            var temp = i > 0 ? -31 : 31;
-            return (width / 3) + (i * 60) + temp; })
-        .attr('y', height - 30)
-        .text(function(d) { return d + "%"; });
+  //save the geo data
+  var counties = topojson.feature(data, data.objects.counties),
+      iowa = topojson.merge(data, data.objects.counties.geometries);
 
-}
+  // Set up the projections using the data to set projection scale
+  path.projection(d3.geoConicConformal()
+      .parallels([42 + 4 / 60, 43 + 16 / 60])
+      .rotate([93 + 30 / 60, -41 - 30 / 60])
+      .fitSize([width, height], counties));
+
+  // years
+  var years = ['1992', '1996', '2000', '2004', '2008', '2012'];
+
+  //loop to make each map
+  years.forEach(function(d) {
+
+    // hold the year
+    var year = d;
+
+    var svg = d3.select("body").append("svg")
+        .attr('id', year)
+        .attr("width", width)
+        .attr("height", height);
+
+    svg.selectAll('path')
+            .data(counties.features)
+        .enter().append('path')
+        .attr('class', 'tract')
+        .attr('d', path)
+        .style('fill', function(d) { return color(d.properties[year]); });
+
+    // State outline
+    svg.append('path')
+        .datum(iowa)
+        .attr('class', 'state')
+        .attr('d', path);
+
+    // And finally the year
+    svg.append('text')
+      .attr('class', 'title')
+      .attr('x', width / 2)
+      .attr('y', height)
+        .text(year);
+
+  });
+});
+
 </script>
 </body>
