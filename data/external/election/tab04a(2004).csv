@@ -3,7 +3,7 @@ Table with row headers in column A and column headers in rows 5 through 6.,,,,,,
 (In thousands),,,,,,,,,,
 (leading dots indicate subpart),,,,,,,,,,
 "State, sex, race, and Hispanic origin",Population 18 and over,Total citizen,,,Total registered,,,Total voted,,
-"State, sex, race, and Hispanic origin",Population 18 and over,Total  ,Percent citizen (18+),Margin of error1,Total  ,Percent registered (18+),Margin of error1,Total  ,Percent voted (18+),Margin of error1
+"State, sex, race, and Hispanic origin",Population 18 and over,Total citizen,Percent citizen (18+),Margin of error1,Total registered,Percent registered (18+),Margin of error1,Total voted,Percent voted (18+),Margin of error1
 UNITED STATES,,,,,,,,,,
 .Total,215694,197005,91.3,0.2,142070,65.9,0.3,125736,58.3,0.3
 .Male,103812,94147,90.7,0.3,66406,64,0.4,58455,56.3,0.4

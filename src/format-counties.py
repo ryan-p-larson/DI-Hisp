@@ -1,66 +1,61 @@
 
 # coding: utf-8
 
-# In[1]:
+# In[18]:
 
 # Libraries & directories
 import pandas as pd
 
 
-# In[2]:
+# In[19]:
 
-dirData = 'data/'
+dirData = '../data/'
 dirDataExt = dirData + 'external/'
 
 dirCensus = dirDataExt + 'census/'
 
 
-# In[3]:
+# In[20]:
 
 # 1990s first
-f1990 = dirCensus + 'crhia90.txt'
+f1992 = dirCensus + 'crhia92.txt'
 
-# 1990's Census is fixed width and weird -> columns and names
-f1990Cols = [(0,6), (6,40), (40, 51), (51, 60), (60, 69), (69, 78), (78, 86), (86, 96), (96, 104), (105, 114)]
-f1990ColNames = ['FIPS', 'County Name', 'Total Population', 'White', 'White - Hispanic', 'White - non hispanic', 'Black', 'American Indian & Native Alaskan', 'Asian & Pacific Islander', 'Hispanic']
+# 1992's Census is fixed width and weird -> columns and names
+f1992Cols = [(0,6), (6,40), (40, 51), (51, 60), (60, 69), (69, 78), (78, 86), (86, 96), (96, 104), (105, 114)]
+f1992ColNames = ['FIPS', 'County Name', 'Total Population', 'White', 'White - Hispanic', 'White - non hispanic', 'Black', 'American Indian & Native Alaskan', 'Asian & Pacific Islander', 'Hispanic']
 
 # The file has 8 rows of metadata
 # use cols and header, set header to none for custom cols
-df1990 = pd.read_fwf(f1990, skiprows=16, colspecs=f1990Cols,
-                     header=None, names=f1990ColNames, index_col=False,
+df1992 = pd.read_fwf(f1992, skiprows=16, colspecs=f1992Cols,
+                     header=None, names=f1992ColNames, index_col=False, 
                      nrows=99)
 
 # Calc the percentage
-df1990['hisp_perc'] = df1990['Hispanic'] / df1990['Total Population']
+df1992['hisp_perc'] = (df1992['Hispanic'] / df1992['Total Population']) * 100
 
 
-# In[4]:
+# In[21]:
 
-df1990.head()
+# 1996 next
+f1996 = dirCensus + 'crhia96.txt'
 
-
-# In[5]:
-
-# 1995 next
-f1995 = dirCensus + 'crhia95.txt'
-
-f1995Cols = f1900Cols = [(0,6), (6,40), (40, 51), (51, 60), (60, 69), (69, 78), (78, 86), (86, 96), (96, 105), (105, 115)]
+f1996Cols = [(0,6), (6,40), (40, 51), (51, 60), (60, 69), (69, 78), (78, 86), (86, 96), (96, 105), (105, 115)]
 
 # Reuse the 1990 cols & names
-df1995 = pd.read_fwf(f1995, skiprows=16, colspecs=f1995Cols,
-                     header=None, names=f1990ColNames, index_col=False,
+df1996 = pd.read_fwf(f1996, skiprows=16, colspecs=f1996Cols,
+                     header=None, names=f1992ColNames, index_col=False, 
                     nrows=99)
 
 # Calc the percentage
-df1995['hisp_perc'] = df1995['Hispanic'] / df1995['Total Population']
+df1996['hisp_perc'] = (df1996['Hispanic'] / df1996['Total Population']) * 100
 
 
-# In[6]:
+# In[22]:
 
-df1995.head()
+df1996.head()
 
 
-# In[10]:
+# In[23]:
 
 # 2000
 f2000s = dirCensus + 'CO-EST00INT-SEXRACEHISP.csv'
@@ -68,7 +63,7 @@ f2000s = dirCensus + 'CO-EST00INT-SEXRACEHISP.csv'
 df2000s = pd.read_csv(f2000s, dtype={'COUNTY':str}, encoding = 'iso-8859-1')
 
 
-# In[11]:
+# In[24]:
 
 # filtering...
 # SEX = 0 [total]
@@ -77,11 +72,11 @@ df2000s = pd.read_csv(f2000s, dtype={'COUNTY':str}, encoding = 'iso-8859-1')
 
 # State=19 at the end
 
-filt2000s = df2000s[['STATE', 'COUNTY', 'CTYNAME', 'SEX', 'ORIGIN', 'RACE', 'POPESTIMATE2000', 'POPESTIMATE2005', 'POPESTIMATE2010']][(df2000s.STATE == 19)]
+filt2000s = df2000s[['STATE', 'COUNTY', 'CTYNAME', 'SEX', 'ORIGIN', 'RACE', 'POPESTIMATE2000', 'POPESTIMATE2004', 'POPESTIMATE2008']][(df2000s.STATE == 19)]
 filt2000s.head()
 
 
-# In[12]:
+# In[25]:
 
 # 2000
 
@@ -90,100 +85,95 @@ hisp2000 = filt2000s[['CTYNAME', 'COUNTY', 'SEX', 'ORIGIN', 'RACE', 'POPESTIMATE
 
 # create the final dataframe
 # rename column to hispanic population
-df2000 = hisp2000[['CTYNAME', 'COUNTY', 'POPESTIMATE2000']][(hisp2000.SEX == 0) & (hisp2000.RACE == 0) & (hisp2000.ORIGIN == 2)].rename(columns={'POPESTIMATE2000': 'hisp_pop'})
+df2000 = hisp2000[['CTYNAME', 'COUNTY', 'POPESTIMATE2000']][(hisp2000.SEX == 0) & (hisp2000.RACE == 0) & (hisp2000.ORIGIN == 2)].rename(columns={'POPESTIMATE2000': 'hisp_pop'}) 
 
 # Add column, but use the indexes to assign value
 df2000['total_pop'] = hisp2000['POPESTIMATE2000'][(hisp2000.SEX == 0) & (hisp2000.RACE == 0) & (hisp2000.ORIGIN == 0)].values
 
 # Finally, create the percentage
-df2000['hisp_perc'] = df2000['hisp_pop'] / df2000['total_pop']
+df2000['hisp_perc'] = (df2000['hisp_pop'] / df2000['total_pop']) * 100
 
 
-# In[13]:
+# In[26]:
 
-# 2005
-
-# Create another filtered dataframe with only the 2000's info
-hisp2005 = filt2000s[['CTYNAME', 'COUNTY', 'SEX', 'ORIGIN', 'RACE', 'POPESTIMATE2005']]
-
-# rename column to hispanic population
-df2005 = hisp2005[['CTYNAME', 'COUNTY', 'POPESTIMATE2005']][(hisp2005.SEX == 0) & (hisp2005.RACE == 0) & (hisp2005.ORIGIN == 2)].rename(columns={'POPESTIMATE2005': 'hisp_pop'})
-
-# Add column, but use the indexes to assign value
-df2005['total_pop'] = hisp2005['POPESTIMATE2005'][(hisp2005.SEX == 0) & (hisp2005.RACE == 0) & (hisp2005.ORIGIN == 0)].values
-
-# Finally, create the percentage
-df2005['hisp_perc'] = df2005['hisp_pop'] / df2005['total_pop']
-
-
-# In[14]:
-
-# 2010
+# 2004
 
 # Create another filtered dataframe with only the 2000's info
-hisp2010 = filt2000s[['CTYNAME', 'COUNTY', 'SEX', 'ORIGIN', 'RACE', 'POPESTIMATE2010']]
+hisp2004 = filt2000s[['CTYNAME', 'COUNTY', 'SEX', 'ORIGIN', 'RACE', 'POPESTIMATE2004']]
 
 # rename column to hispanic population
-df2010 = hisp2010[['CTYNAME', 'COUNTY', 'POPESTIMATE2010']][(hisp2010.SEX == 0) & (hisp2010.RACE == 0) & (hisp2010.ORIGIN == 2)].rename(columns={'POPESTIMATE2010': 'hisp_pop'})
+df2004 = hisp2004[['CTYNAME', 'COUNTY', 'POPESTIMATE2004']][(hisp2004.SEX == 0) & (hisp2004.RACE == 0) & (hisp2004.ORIGIN == 2)].rename(columns={'POPESTIMATE2004': 'hisp_pop'}) 
 
 # Add column, but use the indexes to assign value
-df2010['total_pop'] = hisp2010['POPESTIMATE2010'][(hisp2010.SEX == 0) & (hisp2010.RACE == 0) & (hisp2010.ORIGIN == 0)].values
+df2004['total_pop'] = hisp2004['POPESTIMATE2004'][(hisp2004.SEX == 0) & (hisp2004.RACE == 0) & (hisp2004.ORIGIN == 0)].values
 
 # Finally, create the percentage
-df2010['hisp_perc'] = df2010['hisp_pop'] / df2010['total_pop']
-
-
-# In[15]:
-
-df2010.head()
-
-
-# In[24]:
-
-# 2015
-
-f2015 = dirCensus + 'CC-EST2015-ALLDATA-19.csv'
-
-df2015 = pd.read_csv(f2015, dtype={'COUNTY':str})
-
-# 2015 file has ALL counties, we'll need to filter down
-# YEAR = 8 [2015 estimate]
-# AGEGRP = 0 [Total]
-df2015 = df2015[(df2015.YEAR == 8) & (df2015.AGEGRP == 0)]
-
-# add total hispanic population
-df2015['hisp_pop'] = df2015.apply(lambda x: x.H_MALE + x.H_FEMALE, axis=1)
-
-# And calculate the percentage
-df2015['hisp_perc'] = df2015.hisp_pop / df2015.TOT_POP
-
-
-# In[25]:
-
-df2015.head()
+df2004['hisp_perc'] = (df2004['hisp_pop'] / df2004['total_pop']) * 100
 
 
 # In[27]:
 
+# 2008
+
+# Create another filtered dataframe with only the 2000's info
+hisp2008 = filt2000s[['CTYNAME', 'COUNTY', 'SEX', 'ORIGIN', 'RACE', 'POPESTIMATE2008']]
+
+# rename column to hispanic population
+df2008 = hisp2008[['CTYNAME', 'COUNTY', 'POPESTIMATE2008']][(hisp2008.SEX == 0) & (hisp2008.RACE == 0) & (hisp2008.ORIGIN == 2)].rename(columns={'POPESTIMATE2008': 'hisp_pop'}) 
+
+# Add column, but use the indexes to assign value
+df2008['total_pop'] = hisp2008['POPESTIMATE2008'][(hisp2008.SEX == 0) & (hisp2008.RACE == 0) & (hisp2008.ORIGIN == 0)].values
+
+# Finally, create the percentage
+df2008['hisp_perc'] = (df2008['hisp_pop'] / df2008['total_pop']) * 100
+
+
+# In[28]:
+
+df2008.head()
+
+
+# In[29]:
+
+# 2012
+
+f2012 = dirCensus + 'CC-EST2012-ALLDATA-19.csv'
+
+df2012 = pd.read_csv(f2012, dtype={'COUNTY':str})
+
+# 2012 file has ALL counties, we'll need to filter down
+# YEAR = 8 [2015 estimate]
+# AGEGRP = 0 [Total]
+df2012 = df2012[(df2012.YEAR == 5) & (df2012.AGEGRP == 0)]
+
+# add total hispanic population
+df2012['hisp_pop'] = df2012.H_MALE + df2012.H_FEMALE
+
+# And calculate the percentage
+df2012['hisp_perc'] = (df2012.hisp_pop / df2012.TOT_POP) * 100
+
+
+# In[30]:
+
 # Canonical dataframe
 
 # Create a dataframe from 2010 and keep only the vars we want
-dfCanonical = df2010[['CTYNAME', 'COUNTY', 'hisp_perc']].rename(columns={'hisp_perc':'hisp_perc2010'})
+dfCanonical = df2008[['CTYNAME', 'COUNTY', 'hisp_perc']].rename(columns={'hisp_perc':'hisp_perc2008'})
 
 # Assign and rename percentages calculated from previous dataframes
-dfCanonical['hisp_perc2005'] = df2005['hisp_perc']
+dfCanonical['hisp_perc2004'] = df2004['hisp_perc']
 dfCanonical['hisp_perc2000'] = df2000['hisp_perc']
 
 # indices mismatch, just use values as all are in order
-dfCanonical['hisp_perc1995'] = df1995['hisp_perc'].values
-dfCanonical['hisp_perc1990'] = df1990['hisp_perc'].values
-dfCanonical['hisp_perc2015'] = df2015['hisp_perc'].values
+dfCanonical['hisp_perc1996'] = df1996['hisp_perc'].values
+dfCanonical['hisp_perc1992'] = df1992['hisp_perc'].values
+dfCanonical['hisp_perc2012'] = df2012['hisp_perc'].values
 
 
 dfCanonical.head()
 
 
-# In[29]:
+# In[31]:
 
 # write out to a csv
 fCanonical = dirData + 'processed/populations/ia-hisp-counties.csv'
@@ -191,3 +181,6 @@ dfCanonical.to_csv(fCanonical, float_format='%.3f', index=False)
 
 
 # In[ ]:
+
+
+
