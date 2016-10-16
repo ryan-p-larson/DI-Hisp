@@ -11,4 +11,4 @@ Daily Iowan, Hispanic population analysis for the 2016 Presidential Election.
 | Var | Calculation | Justification |
 |-----|-------------|---------------|
 | Impact (% Voted of Overall) | # voted (of ethnic group) / # voted of overall | How much did this ethnic group influence the election? On a large scale, this decides elections. |
-| Engagement (% Voted of ethnic group) | # voted (of ethnic group) / # people of ethnic group | How many people contributed to the election? Was politics an important topic for this group? |
+| Engagement (% Voted of ethnic group) | # voted (of ethnic group) / # people of ethnic group | How many people contributed to the election? Was politics an important topic for this group? On a small scale, this can win you an election (swing states, tight races, etc). |
