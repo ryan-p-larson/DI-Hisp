@@ -1,0 +1,72 @@
+var margin = {top: 20, right: 50, bottom: 30, left: 50},
+    width = 750 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var svg = d3.select("#horizontalBars").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var x = d3.scalePoint()
+        .domain(['1996', '2000', '2004', '2008', '2012'])
+        .rangeRound([0, width]),
+    y = d3.scaleLinear()
+        .domain([0, 100])
+        .rangeRound([height, 0]),
+    color = d3.scaleOrdinal()
+        .domain(['Black', 'Hispanic', 'Asian'])
+        .range(['#555555', '#e31a1c', '#444444']),
+    labels = d3.format(" %");
+
+var line = d3.line()
+    .x(function(d) { return x(d.Year); })
+    .y(function(d) { return y(d.Turnout)})
+    .defined(function(d) { return d.Turnout; });
+
+d3.csv('data/processed/elections/election-voting-populations.csv', function(data) {
+
+  var voters = data.columns.slice(1).map(function(id) {
+    return {
+      id: id,
+      values: data.map(function(d) {
+        return {Year: d.Year, Turnout: +d[id]};
+      })
+    };
+  });
+
+  svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(d3.axisLeft(y))
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("fill", "#000")
+      .text("Voter Turnout %");
+
+  var races = svg.selectAll(".ethnicity")
+      .data(voters)
+        .enter().append("g")
+      .attr('class', 'ethnicity');
+
+  races.append('path')
+    .attr('class', 'line')
+    .attr('d', function(d) { return line(d.values); })
+    .style('stroke', function(d) { console.log(color(d.id));return color(d.id); })
+    .style('stroke-width', function(d) { return (d.id === 'Hispanic') ? 2 : 1.5; });
+
+
+  races.append("text")
+      .datum(function(d) { return {id: d.id, value: d.values[d.values.length - 1]}; })
+      .attr("transform", function(d) { return "translate(" + x(d.value.Year) + "," + y(d.value.Turnout) + ")"; })
+      .attr("x", 3)
+      .attr("dy", "0.35em")
+      .style("font", "10px sans-serif")
+      .text(function(d) { return d.id; });
+});

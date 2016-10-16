@@ -150,3 +150,22 @@ function census(tract) {
     var county = tract.substring(0, 5);
     return county;
 }
+
+
+//legend stuff
+var legend = svg.append("g")
+  .attr("class", "legend")
+  .attr("transform", "translate(20,20)");
+
+var legendQuant = d3.legendColor()
+  .labelFormat(d3.format(".2f"))
+  //.useClass(true)
+  .title('Hispanic Population Density')
+  .shapeHeight(20)
+  .shapeWidth(20)
+  .shapePadding(10)
+  .labels(['< 0.5%', '  0.75%', '  1.25%', '  2.0%', '  3.5%', '> 5.0%'])
+  .scale(color);
+
+svg.select(".legend")
+  .call(legendQuant);
