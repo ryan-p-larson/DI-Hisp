@@ -8,15 +8,15 @@ Daily Iowan, Hispanic population analysis for the 2016 Presidential Election.
 
 **Detailed Map**
 
-<img src='examples/multiples/2-detailed-map.png'></img>
+<img src='examples/detailed-map/2-detailed-map.png'></img>
 
 **Ethnic Participation**
 
-<img src='examples/multiples/3-ethnic-participation.png'></img>
+<img src='examples/ethnic-participation/3-ethnic-participation.png'></img>
 
 **Election Votes**
 
-<img src='examples/multiples/4-election-votes.png'></img>
+<img src='examples/election-votes/4-election-votes.png'></img>
 
 
 
