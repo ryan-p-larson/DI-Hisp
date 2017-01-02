@@ -1,6 +1,8 @@
 # DI-Hisp
 Daily Iowan, Hispanic population analysis for the 2016 Presidential Election.
 
+Read the article on the [Daily Iowan](http://daily-iowan.com/2016/11/02/el-voto/).
+
 
 <img src='examples/multiples/1-small-multiples.png'></img>
 ---
